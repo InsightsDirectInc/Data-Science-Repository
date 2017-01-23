@@ -94,9 +94,13 @@ train.test.sort$activ_label[train.test.sort$activityid==6]<-"LAYING"
 
 names(train.test.sort)
 
-#From the data set in step 4, creates a second,
+#Creates a second,
 #independent tidy data set with the average of each variable for each activity and each subject  STEP 5
 class(train.test.sort$subjectid)
 train.test.summary<-aggregate(train.test.sort, by=list(train.test.sort$subjectid,train.test.sort$activityid),FUN=mean)
 names(train.test.summary)
 train.test.summary<-train.test.summary[,1:77]
+
+#writing out file to Upload
+
+write.table(train.test.summary, sep=" " , file="C:\\Users\\rajanm1\\Data-Science-Repository\\train.test.summary.txt",row.name=FALSE) 
